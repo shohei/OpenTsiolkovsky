@@ -16,7 +16,7 @@ def apply_extend(arg):
 
     for i in range(start_index, end_index):
         caseNo = i
-        if id_proc == 0: print("{0:}/{1:}".format(caseNo, end_index))
+        if id_proc == 0: print(("{0:}/{1:}".format(caseNo, end_index)))
 
         # make filename
         input_file  = input_file_template.format(caseNo)
@@ -59,7 +59,7 @@ if __name__ == "__main__":
     if len(argv) > 1:
         otmc_mission_name = argv[1]
     else:
-        print "PLEASE INPUT mission_name as the command line argument."
+        print("PLEASE INPUT mission_name as the command line argument.")
         exit()
 
     os.system("aws s3 cp s3://otmc/{0:s}/raw/inp/mc.json .".format(otmc_mission_name))

@@ -11,15 +11,15 @@ def make_param_json(json_file, change_key1="name(str)", change_key2=None,
 	data = json.load(f)
 	# キー1があればキー1のバリューに書き換え、キー2があればキー2
 	try:
-		if (data.has_key(change_key1)):
+		if (change_key1 in data):
 			value1 = data[change_key1]
 			if (change_key2 == None):
 				data[change_key1] = change_value
-			elif (value1.has_key(change_key2)):
+			elif (change_key2 in value1):
 				value2 = value1[change_key2]
 				if (change_key3 == None):
 					value1[change_key2] = change_value
-				elif (value2.has_key(change_key3)):
+				elif (change_key3 in value2):
 					value2[change_key3] = change_value
 	except:
 		# print("json structure error")
@@ -41,5 +41,5 @@ if __name__ == '__main__':
 		change_value = "test"
 
 	data = make_param_json(json_file, change_key, change_value);
-	print(json.dumps(data, sort_keys = True, indent = 4))
+	print((json.dumps(data, sort_keys = True, indent = 4)))
 	pass

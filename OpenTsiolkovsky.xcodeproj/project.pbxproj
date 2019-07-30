@@ -63,7 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				A36D52AB1BF98B6C001864D3 /* README.md */,
-				A36D52A31BF98A30001864D3 /* scr */,
+				A36D52A31BF98A30001864D3 /* src */,
 				A36D52A21BF98A30001864D3 /* Products */,
 				A31646B81C928591000FA98B /* lib */,
 			);
@@ -77,7 +77,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A36D52A31BF98A30001864D3 /* scr */ = {
+		A36D52A31BF98A30001864D3 /* src */ = {
 			isa = PBXGroup;
 			children = (
 				A36D52A41BF98A30001864D3 /* main.cpp */,
@@ -94,7 +94,7 @@
 				A3E82AC91CAA0E62007CC708 /* Orbit.cpp */,
 				A3E82ACA1CAA0E62007CC708 /* Orbit.hpp */,
 			);
-			path = scr;
+			path = src;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

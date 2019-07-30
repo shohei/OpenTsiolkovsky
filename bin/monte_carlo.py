@@ -12,7 +12,7 @@ import subprocess
 
 def error_loader(data, route):
     result = []
-    for k, v in data.items():
+    for k, v in list(data.items()):
         if k == "multiply_statistically" or \
                 k == "add_statistically" or \
                 k == "from_error_files"  or \
@@ -130,7 +130,7 @@ if __name__ == "__main__":
     nominalfile = data["nominalfile"]
     gosafile    = data["gosafile"]
 
-    if "NLoop" in data.keys():
+    if "NLoop" in list(data.keys()):
         NLoop       = data["NLoop"]
         i = int(os.getenv("AWS_BATCH_JOB_ARRAY_INDEX"))
 

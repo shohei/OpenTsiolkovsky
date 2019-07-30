@@ -13,7 +13,7 @@ argv = sys.argv
 if len(argv) > 1:
     otmc_mission_name = argv[1]
 else:
-    print "PLEASE INPUT mission_name as the command line argument."
+    print("PLEASE INPUT mission_name as the command line argument.")
     exit()
 
 os.system("aws s3 cp s3://otmc/{0:s}/stat/{1:s} .".format(otmc_mission_name,inputfile))

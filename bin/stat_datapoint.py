@@ -1,5 +1,5 @@
 #!/usr/bin/python
-from __future__ import print_function
+
 import pandas as pd
 import os
 import json
@@ -10,7 +10,7 @@ import multiprocessing as mp
 def read_data_points(arg):
     [id_proc, Nproc, input_directory, input_file_template, number_of_sample, sample_points] = arg
 
-    fo_buff = ["" for i in range(len(sample_points.keys()))]
+    fo_buff = ["" for i in range(len(list(sample_points.keys())))]
 
     shou  = int(number_of_sample / Nproc)
     amari = number_of_sample - shou * Nproc
@@ -100,9 +100,9 @@ if __name__ == "__main__":
 #    callback = [read_data_points((id_proc, Nproc, input_directory, input_file_template, number_of_sample, sample_points))]
 
     # join them
-    fo_buff = ["" for i in range(len(sample_points.keys()))]
+    fo_buff = ["" for i in range(len(list(sample_points.keys())))]
     for i in range(Nproc):
-        for j in range(len(sample_points.keys())):
+        for j in range(len(list(sample_points.keys()))):
             fo_buff[j] += callback[i][j]
 
     # write out datapoint_*.csv

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import sys
-reload(sys)
+import imp
+imp.reload(sys)
 import platform
 # デフォルトの文字コードを変更する．
 sys.setdefaultencoding('utf-8')
@@ -18,15 +19,15 @@ def make_param_json(json_file, change_key1="name", change_key2=None,
 	data = json.load(f)
 	# キー1があればキー1のバリューに書き換え、キー2があればキー2
 	try:
-		if (data.has_key(change_key1)):
+		if (change_key1 in data):
 			value1 = data[change_key1]
 			if (change_key2 == None):
 				data[change_key1] = change_value
-			elif (value1.has_key(change_key2)):
+			elif (change_key2 in value1):
 				value2 = value1[change_key2]
 				if (change_key3 == None):
 					value1[change_key2] = change_value
-				elif (value2.has_key(change_key3)):
+				elif (change_key3 in value2):
 					value2[change_key3] = change_value
 	except:
 		print("json structure error")
@@ -55,10 +56,10 @@ def test_opt(burn_time):
 	max_alt = float(outputlist[max_alt_index])
 	f.close()
 	os.remove(temp_file)
-	print("burn time = %.2f\tdistance = %.1f" % (burn_time, abs(100000 - max_alt)))
+	print(("burn time = %.2f\tdistance = %.1f" % (burn_time, abs(100000 - max_alt))))
 	return abs(100000 - max_alt)
 
 if __name__ == '__main__':
 	x0 = 80
 	res = optimize.minimize(test_opt, x0, method='Nelder-Mead', tol=1e-3)
-	print res
+	print(res)

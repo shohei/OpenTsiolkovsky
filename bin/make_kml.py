@@ -8,6 +8,7 @@ import simplekml
 import numpy as np
 import json
 import pandas as pd
+import traceback
 
 stage_literal = ["", "M", "S", "T", "F"]  # ex. MECO SECO etc...
 kml = simplekml.Kml(open=1)
@@ -83,9 +84,10 @@ def make_kml(name, div, stage, is_dump=False):
         ls_IIP.coords = coord_IIP
         ls_IIP.style.linestyle.colormode = simplekml.ColorMode.random
         ls_IIP.style.linestyle.color = simplekml.Color.changealphaint(150, simplekml.Color.white)
-        print("created kml file:" + str(stage) + " stage" + dump_name)
+        print(("created kml file:" + str(stage) + " stage" + dump_name))
     except:
-        print("Error: %d stage %s CANNNOT be maked kml." % (stage, dump_name))
+        print(("Error: %d stage %s CANNOT be maked kml." % (stage, dump_name)))
+        traceback.print_exc()
 
 if __name__ == '__main__':
     if (len(sys.argv) != 1):
@@ -103,7 +105,7 @@ if __name__ == '__main__':
     time_step = data["calculate condition"]["time step for output[s]"]
     reduce_interval = int(time_step_output // time_step)
 
-    print("INPUT FILE: %s" % (file_name))
+    print(("INPUT FILE: %s" % (file_name)))
     for i in range(1,10):
         if ("stage" + str(i) in data):
             make_kml(name, reduce_interval, i)

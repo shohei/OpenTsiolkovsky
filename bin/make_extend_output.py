@@ -156,12 +156,12 @@ if __name__ == '__main__':
 
     # 入力の確認
     print("==== INPUT PARAMETER ===")
-    print("input JSON file : " + file_name)
-    print("viewer latitude  (deg) : %.6f" % antenna_lat)
-    print("viewer longitude (deg) : %.6f" % antenna_lon)
-    print("viewer altitude  (m)   : %.1f" % antenna_alt)
-    print("IIP cut-off time (sec) : %.1f" % cutoff_time)
-    print("visible range invalid angle (deg) : %.1f" % invalid_angle_deg)
+    print(("input JSON file : " + file_name))
+    print(("viewer latitude  (deg) : %.6f" % antenna_lat))
+    print(("viewer longitude (deg) : %.6f" % antenna_lon))
+    print(("viewer altitude  (m)   : %.1f" % antenna_alt))
+    print(("IIP cut-off time (sec) : %.1f" % cutoff_time))
+    print(("visible range invalid angle (deg) : %.1f" % invalid_angle_deg))
     print("==== PROCESSING ====")
 
     # ファイル読み込み
@@ -178,7 +178,7 @@ if __name__ == '__main__':
     # データ作り
     stage_index = 1
     for stage_exist in following_stage_exist:
-        print("Now processing " + str(stage_index) + " stage csv file ...")
+        print(("Now processing " + str(stage_index) + " stage csv file ..."))
         file_name = "output/" + rocket_name + "_dynamics_" + str(stage_index) + ".csv"
         df = pd.read_csv(file_name, index_col=False)
         posLLH_antenna = np.array([antenna_lat, antenna_lon, antenna_alt])

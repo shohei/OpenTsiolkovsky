@@ -85,7 +85,7 @@ def make_nmea(name, div, stage):
             sentence_GPZDA = sentence_GPZDA + make_checksum_of_NMEA(sentence_GPZDA)
             f.write(sentence_GPGGA + '\n')
             f.write(sentence_GPZDA + '\n')
-    print("created nmea file:" + str(stage) + " stage")
+    print(("created nmea file:" + str(stage) + " stage"))
 
 if __name__ == '__main__':
     if (len(sys.argv) != 1):

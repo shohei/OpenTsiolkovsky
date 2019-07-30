@@ -9,7 +9,7 @@ import multiprocessing as mp
 def read_data_points(arg):
     [id_proc, Nproc, input_directory, input_file_template, number_of_sample, sample_points] = arg
 
-    fo_buff = ["" for i in range(len(sample_points.keys()))]
+    fo_buff = ["" for i in range(len(list(sample_points.keys())))]
 
     shou  = int(number_of_sample/Nproc)
     amari = number_of_sample - shou * Nproc
@@ -20,7 +20,7 @@ def read_data_points(arg):
         caseNo = i+1
         filename = input_file_template.format(caseNo)
         os.system("aws s3 cp "+input_directory+filename+" . > /dev/null")
-        if id_proc == 0: print("{0:}/{1:}".format(caseNo, end_index))
+        if id_proc == 0: print(("{0:}/{1:}".format(caseNo, end_index)))
         #os.system("cp data/"+filename+" .") ######## FOR DEBUG########################
         
         # format csv file to proper form
@@ -67,7 +67,7 @@ if __name__ == "__main__":
     if len(argv) > 1:
         otmc_mission_name = argv[1]
     else:
-        print "PLEASE INPUT mission_name as the command line argument."
+        print("PLEASE INPUT mission_name as the command line argument.")
         exit()
 
     os.system("aws s3 cp s3://otmc/{0:s}/raw/inp/mc.json .".format(otmc_mission_name))
@@ -100,9 +100,9 @@ if __name__ == "__main__":
 
 
     # join them
-    fo_buff = ["" for i in range(len(sample_points.keys()))]
+    fo_buff = ["" for i in range(len(list(sample_points.keys())))]
     for i in range(Nproc):
-        for j in range(len(sample_points.keys())):
+        for j in range(len(list(sample_points.keys()))):
             fo_buff[j] += callback[i][j]
 
     # write out datapoint_*.csv
